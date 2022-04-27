@@ -1,10 +1,10 @@
-.PHONY
+.PHONY: env
 env:
 	mamba env create -f environment.yml --name ligo
 	conda activate ligo
 	python -m ipykernel install --user --name ligo --display-name "ipykernel 2"
 
-.PHONY
+.PHONY: html
 html:
 	jupyter-book build .
 
