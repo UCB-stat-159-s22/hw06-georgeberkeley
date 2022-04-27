@@ -1,0 +1,33 @@
+from ligotools import utils
+from ligotools import readligo as rl
+import json
+from scipy.interpolate import interp1d
+import matplotlib.mlab as mlab
+fnjson = "BBH_events_v3.json"
+import numpy as np
+import os
+
+
+def test_whiten():
+	events = json.load(open(fnjson,"r"))
+	eventname = 'GW150914' 
+	event = events[eventname]
+	fn_H1 = event['fn_H1'] 
+	fs = 4096
+	NFFT = 4*fs
+	strain, time,  channel_dictt = rl.loaddata(fn_H1, 'H1')
+	dt = time[1] - time[0]
+	Pxx_H1, freqs = mlab.psd(strain, Fs = fs, NFFT = NFFT)
+	psd_H1 = interp1d(freqs, Pxx_H1)
+	whitten_strain = utils.whiten(strain,psd_H1,dt)
+	assert type(whitten_strain) == type(np.array([1,2]))
+
+def test_write_wavefile():
+	out_audio = np.sin(np.linspace(0, 3.14, 100))
+	out_path = "audio/test_audio.wav"
+	utils.write_wavfile(out_path,4096, out_audio)
+	assert os.path.exists(out_path)	
+def test_reqshift():
+	arr = utils.reqshift(np.linspace(0,1, 20))
+	assert arr[1] == 0.05263157894736854
+

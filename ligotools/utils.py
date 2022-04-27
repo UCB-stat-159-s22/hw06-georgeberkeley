@@ -39,7 +39,7 @@ def reqshift(data,fshift=100,sample_rate=4096):
 
 
 def plotter(time, timemax, SNR, pcolor, det, eventname, plottype, 
-            strain_whitenbp, template_match, tevent, datafreq,template_fft, fs, freqs ):
+            strain_whitenbp, template_match, tevent, datafreq,template_fft, fs, freqs, d_eff, data_psd):
     plt.figure(figsize=(10,8))
     plt.subplot(2,1,1)
     plt.plot(time-timemax, SNR, pcolor,label=det+' SNR(t)')

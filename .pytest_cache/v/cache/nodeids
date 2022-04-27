@@ -1,0 +1,10 @@
+[
+  "ligotools/tests/test_readligo.py::test_loaddata", 
+  "ligotools/tests/test_readligo.py::test_segList", 
+  "ligotools/tests/test_readligo.py::test_filelist", 
+  "ligotools/tests/test_readligo.py::test_readhdf5", 
+  "ligotools/tests/test_utils.py::test_whiten", 
+  "ligotools/tests/test_utils.py::test_write_wavefile", 
+  "ligotools/tests/test_utils.py::test_reqshift", 
+  "ligotools/tests/test_utils.py::test_plotter"
+]
